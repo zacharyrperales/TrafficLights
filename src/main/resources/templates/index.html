@@ -1,0 +1,24 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8"/>
+        <title>Twilio TrafficLight Application | Home</title>
+        <link th:rel="stylesheet" th:href="@{webjars/bootstrap/4.0.0-2/css/bootstrap.min.css} "/>
+    </head>
+    <body>
+        <img th:src="@{img/{image}(image=${trafficLight.trafficLightColor} + '.png')}"/>
+        <div th:object="${twilio}">
+            <form action="#" th:action="@{/}" method="post" class="mt-5">
+                <p>Phone Number: <input type="text" name="to" id="to" th:field="*{to}" /></p>
+                <p>Color: <input type="text" th:field="*{body}" /></p>
+                <button class="btn btn-primary" type="submit">Submit</button>
+            </form>
+            <p th:if="${#fields.hasErrors('to')}" th:errors="*{to}">To Errors</p>
+            <p th:if="${#fields.hasErrors('body')}" th:errors="*{body}">Body Errors</p>
+        </div>
+
+        <script th:src="@{/webjars/jquery/jquery.min.js}"></script>
+        <script th:src="@{/webjars/popper.js/umd/popper.min.js}"></script>
+        <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+    </body>
+</html>

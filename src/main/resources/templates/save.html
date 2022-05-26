@@ -1,0 +1,16 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8"/>
+        <title>Twilio TrafficLight Application | Save</title>
+        <link th:rel="stylesheet" th:href="@{webjars/bootstrap/4.0.0-2/css/bootstrap.min.css} "/>
+    </head>
+    <body>
+        <img th:src="@{img/{image}(image=${trafficLight.trafficLightColor} + '.png')}"/>
+        <p th:text="'The traffic light is currently: ' + ${trafficLight.trafficLightColor}">color</p>
+        <form th:action="@{/}" method="post">
+            <button type="submit">Back</button>
+        </form>
+
+    </body>
+</html>
